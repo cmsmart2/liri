@@ -4,8 +4,9 @@ const keys = require("./keys.js");
 const fs = require('fs');
 const axios = require('axios');
 const moment = require('moment');
-
+//liri constructor housing all the search apis and functions
 function Liri (){
+//finds concert using bands in town api
     this.findConcert = async term => {
         const URL = `https://rest.bandsintown.com/artists/${term}/events?app_id=codingbootcamp`
         const { data: concert } = await axios.get(URL)
@@ -16,9 +17,8 @@ function Liri (){
             Venue: ${venues.name}
             Location: ${venues.city}
             Date: ${dateConverted}
-        `);
-        
-        // console.log(JSON.stringify(concert, null, 2))
+        `);  
+//adds search results to log file   
         fs.appendFile('log.txt', concertResponse, (err) => {
           if (err)
             return console.error(err)
@@ -26,7 +26,7 @@ function Liri (){
           console.log(concertResponse)
         })
     };
-   
+//finds song using spotify api   
     this.findSong = async term => {
         const spotify = new Spotify(keys.spotify);
         const generateArtist = function(artist){
@@ -36,7 +36,6 @@ function Liri (){
             if (err) {
             return console.log('Error occurred: ' + err);
             }
-            // console.log(JSON.stringify(data, null, 2));
             const songs = data.tracks.items;
             for (var i =0; i <songs.length; i++){
                 spotifyResponse = (`
@@ -47,6 +46,7 @@ function Liri (){
                     `);
             
                 }
+//adds search results to log file   
             fs.appendFile('log.txt', spotifyResponse, (err) => {
                 if (err)
                       return console.error(err)
@@ -54,6 +54,7 @@ function Liri (){
             })
         }); 
     };
+//finds movie using omdb api
     this.findMovie = async term => {
         const URL = `http://www.omdbapi.com/?apikey=trilogy&t=${term}&y=plot=shorts&r=json`
         const { data: movie } = await axios.get(URL)
@@ -67,8 +68,7 @@ function Liri (){
             Plot: ${movie.Plot}
             Actors: ${movie.Actors}
         `);
-        
-        // console.log(JSON.stringify(movie, null, 2))
+//adds search results to log file       
         fs.appendFile('log.txt', movieResponse, (err) => {
           if (err)
             return console.error(err)
@@ -76,8 +76,27 @@ function Liri (){
           console.log(movieResponse)
         })
     };
-
 }
-
-
+//uses text in random.txt to run liri
+doWhatItSays = function() {
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        if (error) {
+          return console.log(error);
+        }
+        var dataArr = data.split(",");
+        let term = dataArr[1];
+        let search =dataArr[0];
+        const liri = new Liri ();
+        if(search === 'concert-this'){
+            liri.findConcert(term)
+        }else if(search === 'spotify-this-song'){
+            liri.findSong(term)
+        }else if(search === 'movie-this'){
+            liri.findMovie(term)
+        }else{
+            console.log('Sorry I have nothing random to find')
+        }
+    });     
+}
+//exports Liri constructor 
 module.exports = Liri;
