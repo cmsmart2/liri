@@ -46,3 +46,12 @@
             Location: Indianapolis
             Date: 2019-11-10
         
+            Title: Uptown Girls
+            Year: 2003
+            IMDB Rating: 6.1
+            Rotten Tomatoes Rating: undefined
+            Country: USA
+            Language: English
+            Plot: A grown-up woman, who kept her childish instincts and behavior, starts working as a nanny of a 8-year-old girl, who actually acts like an adult. But in the end everything turns to its right places.
+            Actors: Brittany Murphy, Dakota Fanning, Marley Shelton, Donald Faison
+        

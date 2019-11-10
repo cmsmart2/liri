@@ -54,6 +54,29 @@ function Liri (){
             })
         }); 
     };
+    this.findMovie = async term => {
+        const URL = `http://www.omdbapi.com/?apikey=trilogy&t=${term}&y=plot=shorts&r=json`
+        const { data: movie } = await axios.get(URL)
+        const movieResponse = (`
+            Title: ${movie.Title}
+            Year: ${movie.Year}
+            IMDB Rating: ${movie.imdbRating}
+            Rotten Tomatoes Rating: ${movie.tomatoRating}
+            Country: ${movie.Country}
+            Language: ${movie.Language}
+            Plot: ${movie.Plot}
+            Actors: ${movie.Actors}
+        `);
+        
+        // console.log(JSON.stringify(movie, null, 2))
+        fs.appendFile('log.txt', movieResponse, (err) => {
+          if (err)
+            return console.error(err)
+    
+          console.log(movieResponse)
+        })
+    };
+
 }
 
 

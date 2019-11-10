@@ -20,6 +20,7 @@ switch(search){
         break;
     case 'movie-this':
         console.log(`Searching Movie: "${term}"`)
+        liri.findMovie(term);
         break;
     case 'do-what-it-says':
         console.log(`Searching Random: "${term}"`)
