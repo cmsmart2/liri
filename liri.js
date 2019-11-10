@@ -1,21 +1,23 @@
 require("dotenv").config();
 const Spotify = require('node-spotify-api');
 const keys = require("./keys.js");
-const fs = require('fs')
-const axios = require('axios')
+const fs = require('fs');
+const axios = require('axios');
+const moment = require('moment');
 
 function Liri (){
     this.findConcert = async term => {
         const URL = `https://rest.bandsintown.com/artists/${term}/events?app_id=codingbootcamp`
         const { data: concert } = await axios.get(URL)
-        const venues = concert.venue
-        for (var i =0; i <venues.length; i++){
-        concertResponse = (`
-            Venue: ${venues[i].name}
-            Location: ${venues[i].city}
-            Date: ${concert.datetime}
+        const venues = concert[0].venue
+        const dates = concert[0].datetime.slice(0,10)
+        var dateConverted = moment().format(dates, "MM/DD/YYYY");
+        const concertResponse = (`
+            Venue: ${venues.name}
+            Location: ${venues.city}
+            Date: ${dateConverted}
         `);
-        }
+        
         // console.log(JSON.stringify(concert, null, 2))
         fs.appendFile('log.txt', concertResponse, (err) => {
           if (err)

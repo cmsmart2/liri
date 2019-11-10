@@ -14,3 +14,35 @@
                     Preview Link: https://p.scdn.co/mp3-preview/5901dcc890e46e96a6f59ddcc7a365678dfb4912?cid=e95c416e0dd944388b02cdadbba07c9a
                     Album: Petaluma
                     
+            Venue: undefined
+            Location: undefined
+            Date: undefined
+        
+            Venue: Simple Plan and State Champs with Special Guests We The Kings
+            Location: Indianapolis
+            Date: undefined
+        
+            Venue: Simple Plan and State Champs with Special Guests We The Kings
+            Location: Indianapolis
+            Date: 2019-11-10T18:00:00
+        
+            Venue: Simple Plan and State Champs with Special Guests We The Kings
+            Location: Indianapolis
+            Date: Invalid date
+        
+            Venue: Simple Plan and State Champs with Special Guests We The Kings
+            Location: Indianapolis
+            Date: Invalid date
+        
+            Venue: Simple Plan and State Champs with Special Guests We The Kings
+            Location: Indianapolis
+            Date: Invalid date
+        
+            Venue: Simple Plan and State Champs with Special Guests We The Kings
+            Location: Indianapolis
+            Date: 2019-11-10
+        
+            Venue: Simple Plan and State Champs with Special Guests We The Kings
+            Location: Indianapolis
+            Date: 2019-11-10
+        
